@@ -18,7 +18,12 @@ changeColor.addEventListener("click", async () => {
 // The body of this function will be executed as a content script inside the
 // current page
 function setPageBackgroundColor() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    document.body.style.backgroundColor = color;
-  });
+  // chrome.storage.sync.get("color", ({ color }) => {
+  //   document.body.style.backgroundColor = color;
+  // });
+  var elms = document.querySelectorAll("[id='CoursesTable']");
+
+  for(var i = 0; i < elms.length; i++)
+    console.log(elms[i]); // <-- whatever you need to do he
+
 }
