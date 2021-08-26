@@ -37,7 +37,10 @@ function getNeededCourses() {
     for (var j = 0; j < rows.length; j++) {
       var columns = rows[j].getElementsByTagName("td");
       for (var k = 0; k < columns.length; k++) {
-        if (columns[k].textContent == "1 course needed") {
+        if (columns[k].textContent.includes("course needed") ||
+            columns[k].textContent.includes("courses needed") ||
+            columns[k].textContent.includes("credits needed") ||
+            columns[k].textContent.includes("credit needed")) {
           courses.push(rows[j]);
           break;
         }
@@ -50,7 +53,7 @@ function getNeededCourses() {
   for (var i = 0; i < courses.length; i++) {
     insertHTML += courses[i].outerHTML;
   }
-  insertHTML += '</table><br /><b>Total Needed: </b>' + courses.length
+  insertHTML += '</table><br /><b>Total Lines Found: </b>' + courses.length
   document.getElementById("reportText").insertAdjacentHTML('afterbegin',
     insertHTML);
 }
