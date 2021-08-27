@@ -52,9 +52,10 @@ function getNeededCourses() {
         var coursesTable = reqTableRows[j].querySelectorAll(
             "[id='CoursesTable']");
         if (coursesTable.length > 0) {
-          parsedCourses = parseCourseTable(coursesTable);
+          var parsedCourses = parseCourseTable(coursesTable);
           if (parsedCourses.length > 0) {
             for (var k=0; k < parsedCourses.length; k++) {
+              parsedCourses[k] = parsedCourses[k].cloneNode(true);
               parsedCourses[k].insertAdjacentHTML('afterbegin',
                 "<td>" + reqName + "</td>");
               numCells = parsedCourses[k].cells.length;
